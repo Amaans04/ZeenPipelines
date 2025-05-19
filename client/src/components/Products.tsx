@@ -25,7 +25,7 @@ const Products = () => {
   });
 
   useEffect(() => {
-    if (products) {
+    if (products && products.length > 0) {
       let result = [...products];
 
       // Apply category filter

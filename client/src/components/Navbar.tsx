@@ -28,12 +28,12 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navItems = [
-    { id: "home", label: t("nav.home") },
-    { id: "about", label: t("nav.about") },
-    { id: "products", label: t("nav.products") },
-    { id: "industries", label: t("nav.industries") },
-    { id: "why-us", label: t("nav.whyUs") },
-    { id: "contact", label: t("nav.contact") },
+    { id: "/", label: t("nav.home") },
+    { id: "/about", label: t("nav.about") },
+    { id: "/products", label: t("nav.products") },
+    { id: "/industries", label: t("nav.industries") },
+    { id: "/why-us", label: t("nav.whyUs") },
+    { id: "/contact", label: t("nav.contact") },
   ];
 
   return (
