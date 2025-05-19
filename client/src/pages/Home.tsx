@@ -212,46 +212,57 @@ const Home = () => {
       
       <ClientMarquee />
       
+      {/* About Us Section */}
       <section className="py-20 bg-[#f5f7fa]">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-condensed mb-4">
-              {t("home.keyAreas")}
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              {t("home.keyAreasSubtitle")}
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <FeatureCard 
-              title={t("nav.products")}
-              description={t("home.productsSummary")}
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg>}
-              link="/products"
-            />
-            <FeatureCard 
-              title={t("nav.industries")}
-              description={t("home.industriesSummary")}
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 20V8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2Z"/><path d="M6 17v1"/><path d="M12 17v1"/><path d="M18 17v1"/><path d="M12 6V2"/><path d="M10 2h4"/></svg>}
-              link="/industries"
-            />
-            <FeatureCard 
-              title={t("nav.whyUs")}
-              description={t("home.whyUsSummary")}
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 12 2 2 4-4"/><path d="M12 3c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/><path d="M19 3h.01"/><path d="M3 15a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4z"/><path d="M15 13h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/></svg>}
-              link="/why-us"
-            />
-          </div>
-          
-          <div className="text-center mt-12">
-            <Link 
-              href="/contact" 
-              className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md font-medium transition-all inline-flex items-center"
-            >
-              <span>{t("nav.getQuote")}</span>
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="lg:w-1/2">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <img 
+                  src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?auto=format&fit=crop&w=1200&h=800" 
+                  alt="Steel Pipes" 
+                  className="rounded-lg shadow-lg w-full h-auto object-cover"
+                />
+              </motion.div>
+            </div>
+            <div className="lg:w-1/2">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+                  Premier Steel Pipe Supplier
+                </h2>
+                <p className="text-gray-700 mb-4">
+                  Zeen International Pipeline Supply, a premier <span className="text-primary font-semibold">steel pipe supplier</span>, excels in delivering 
+                  comprehensive piping solutions to a variety of industries including oil and gas, petrochemical, 
+                  power, civil, and process sectors. As a renowned <span className="text-primary font-semibold">valve supplier</span>, we also offer an 
+                  extensive selection of pipes, fittings, flanges, and valves, along with other necessary 
+                  accessories to fulfill the diverse needs of our clients.
+                </p>
+                <p className="text-gray-700 mb-6">
+                  Our presence as a leading <span className="text-primary font-semibold">flanges supplier</span> is strengthened by our strong regional and global footprint, 
+                  with offices in key cities across over 60 countries. With a rich legacy spanning over 45 years in the pipe fittings 
+                  industry, Zeen is committed to providing quality-assured, internationally-certified products 
+                  and services. Upholding our brand promise of "Your Business, Our Commitment," we are 
+                  dedicated to ensuring excellence and reliability in every engagement.
+                </p>
+                <Link
+                  href="/about"
+                  className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-md font-medium transition-all inline-flex items-center"
+                >
+                  <span>Read More</span>
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
