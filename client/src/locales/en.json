@@ -1,0 +1,155 @@
+{
+  "meta": {
+    "title": "Zeen International Pipeline Supply - Global Industrial Pipeline Solutions",
+    "description": "Zeen International is a trusted global supplier of industrial pipeline components since 1995, serving Oil & Gas, Marine, Power Generation, and Infrastructure sectors."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "products": "Products",
+    "industries": "Industries",
+    "whyUs": "Why Choose Us",
+    "contact": "Contact",
+    "getQuote": "Get a Quote"
+  },
+  "hero": {
+    "title": "Global Industrial Pipeline Supply Solutions",
+    "tagline": "Pipes. Valves. Flanges. Fittings. Gaskets. Stud Bolts.",
+    "getQuote": "Get a Quote",
+    "downloadCatalog": "Download Catalog"
+  },
+  "about": {
+    "title": "About Zeen International",
+    "subtitle": "Your trusted partner for industrial pipeline solutions, serving global clients since 1995",
+    "historyTitle": "Our Journey",
+    "historyText": "Founded in 1995, Zeen International has grown from a small local supplier to a global leader in industrial pipeline solutions. With headquarters in Dubai and operations across the Middle East, Europe, and Asia, we provide high-quality products and services to the oil & gas, marine, power, and infrastructure sectors.",
+    "values": {
+      "quality": {
+        "title": "Quality Assurance",
+        "text": "ISO 9001:2015 certified with rigorous quality control systems"
+      },
+      "global": {
+        "title": "Global Reach",
+        "text": "Operating in 30+ countries with strategically located warehouses"
+      },
+      "delivery": {
+        "title": "Fast Delivery",
+        "text": "Extensive inventory and logistics network for on-time delivery"
+      }
+    }
+  },
+  "products": {
+    "title": "Our Product Range",
+    "subtitle": "Comprehensive selection of high-quality pipeline components for every industrial application",
+    "filters": {
+      "all": "All Products",
+      "pipes": "Pipes",
+      "valves": "Valves",
+      "flanges": "Flanges",
+      "fittings": "Fittings",
+      "gaskets": "Gaskets",
+      "bolts": "Stud Bolts"
+    },
+    "searchPlaceholder": "Search products...",
+    "inquire": "Inquire",
+    "viewAllBtn": "View Full Catalog",
+    "noResults": "No products match your current filters",
+    "resetFilters": "Reset Filters"
+  },
+  "industries": {
+    "title": "Industries We Serve",
+    "subtitle": "Delivering specialized pipeline solutions for demanding industrial environments",
+    "oil": {
+      "title": "Oil & Gas",
+      "text": "Upstream, midstream, and downstream pipeline components engineered for extreme conditions and meeting strict safety standards."
+    },
+    "marine": {
+      "title": "Marine",
+      "text": "Corrosion-resistant pipeline solutions for shipbuilding, offshore platforms, and marine applications in harsh saltwater environments."
+    },
+    "power": {
+      "title": "Power Generation",
+      "text": "High-pressure, high-temperature piping components for conventional and renewable power plants, designed for reliability."
+    },
+    "infra": {
+      "title": "Infrastructure",
+      "text": "Durable pipeline solutions for water treatment, municipal projects, and urban infrastructure development."
+    }
+  },
+  "whyUs": {
+    "title": "Why Choose Zeen International",
+    "subtitle": "Our commitment to excellence makes us the preferred choice for industrial pipeline supplies",
+    "global": {
+      "title": "Global Reach",
+      "text": "Operating in 30+ countries with strategically located warehouses for fast deliveries worldwide."
+    },
+    "quality": {
+      "title": "Quality Assurance",
+      "text": "ISO 9001:2015 certified with rigorous testing and material traceability documentation."
+    },
+    "delivery": {
+      "title": "Fast Delivery",
+      "text": "Extensive inventory management and global logistics network ensures on-time deliveries."
+    },
+    "team": {
+      "title": "Expert Team",
+      "text": "25+ years of industry experience with specialized knowledge in pipeline engineering."
+    },
+    "certifications": {
+      "title": "Our Certifications & Partners"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Reach out for quotes, inquiries, or technical support from our expert team",
+    "form": {
+      "title": "Get in Touch",
+      "name": "Full Name",
+      "company": "Company",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "inquiryType": "Inquiry Type",
+      "selectType": "Select inquiry type",
+      "quote": "Request a Quote",
+      "product": "Product Information",
+      "technical": "Technical Support",
+      "other": "Other",
+      "message": "Message",
+      "submit": "Submit Inquiry",
+      "submitting": "Submitting...",
+      "success": {
+        "title": "Message Sent",
+        "message": "We'll get back to you as soon as possible."
+      },
+      "error": {
+        "title": "Error",
+        "message": "There was a problem sending your message. Please try again."
+      }
+    },
+    "info": {
+      "title": "Our Offices",
+      "headquarters": "Headquarters",
+      "address": "Jebel Ali Free Zone, Dubai, UAE",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Working Hours",
+      "workdays": "Monday - Friday: 8:00 AM - 6:00 PM",
+      "social": "Connect With Us"
+    },
+    "map": "Interactive Map Location"
+  },
+  "footer": {
+    "about": "Zeen International has been a trusted global supplier of industrial pipeline components since 1995, serving clients across Oil & Gas, Marine, Power Generation, and Infrastructure sectors.",
+    "quickLinks": "Quick Links",
+    "products": "Our Products",
+    "download": "Download",
+    "catalogInfo": "Access our complete product catalog and technical specifications in PDF format.",
+    "catalogBtn": "Download Catalog",
+    "chat": "Live Chat",
+    "whatsapp": "WhatsApp Chat",
+    "copyright": "© 2023 Zeen International Pipeline Supply. All rights reserved.",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "sitemap": "Sitemap"
+  }
+}

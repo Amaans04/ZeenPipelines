@@ -1,0 +1,11 @@
+<svg width="250" height="60" viewBox="0 0 250 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <path d="M0 50H50V10H0V50Z" fill="#E60000"/>
+    <path d="M55 10H160V20H55V10Z" fill="#004AAD"/>
+    <path d="M55 25H150V35H55V25Z" fill="#004AAD"/>
+    <path d="M55 40H140V50H55V40Z" fill="#004AAD"/>
+    <text x="65" y="50" font-family="Roboto Condensed, sans-serif" font-size="16" font-weight="700" fill="#1A1A1A">INTERNATIONAL</text>
+    <text x="170" y="35" font-family="Roboto Condensed, sans-serif" font-size="24" font-weight="700" fill="#E60000">ZEEN</text>
+    <text x="170" y="50" font-family="Roboto, sans-serif" font-size="12" fill="#1A1A1A">PIPELINE SUPPLY</text>
+  </g>
+</svg>

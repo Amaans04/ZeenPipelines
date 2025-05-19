@@ -1,0 +1,155 @@
+{
+  "meta": {
+    "title": "Zeen International Pipeline Supply - Solutions Globales pour Pipelines Industriels",
+    "description": "Zeen International est un fournisseur mondial de confiance de composants de pipeline industriel depuis 1995, desservant les secteurs du pétrole et du gaz, de la marine, de la production d'énergie et des infrastructures."
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "products": "Produits",
+    "industries": "Industries",
+    "whyUs": "Pourquoi Nous Choisir",
+    "contact": "Contact",
+    "getQuote": "Demander un Devis"
+  },
+  "hero": {
+    "title": "Solutions Globales d'Approvisionnement en Pipelines Industriels",
+    "tagline": "Tuyaux. Vannes. Brides. Raccords. Joints. Goujons.",
+    "getQuote": "Demander un Devis",
+    "downloadCatalog": "Télécharger le Catalogue"
+  },
+  "about": {
+    "title": "À Propos de Zeen International",
+    "subtitle": "Votre partenaire de confiance pour les solutions de pipeline industriel, au service des clients mondiaux depuis 1995",
+    "historyTitle": "Notre Parcours",
+    "historyText": "Fondée en 1995, Zeen International est passée d'un petit fournisseur local à un leader mondial des solutions de pipeline industriel. Avec son siège à Dubaï et des opérations au Moyen-Orient, en Europe et en Asie, nous fournissons des produits et services de haute qualité aux secteurs du pétrole et du gaz, de la marine, de l'énergie et des infrastructures.",
+    "values": {
+      "quality": {
+        "title": "Assurance Qualité",
+        "text": "Certifiée ISO 9001:2015 avec des systèmes rigoureux de contrôle de qualité"
+      },
+      "global": {
+        "title": "Portée Mondiale",
+        "text": "Opérant dans plus de 30 pays avec des entrepôts stratégiquement situés"
+      },
+      "delivery": {
+        "title": "Livraison Rapide",
+        "text": "Vaste inventaire et réseau logistique pour une livraison ponctuelle"
+      }
+    }
+  },
+  "products": {
+    "title": "Notre Gamme de Produits",
+    "subtitle": "Sélection complète de composants de pipeline de haute qualité pour chaque application industrielle",
+    "filters": {
+      "all": "Tous les Produits",
+      "pipes": "Tuyaux",
+      "valves": "Vannes",
+      "flanges": "Brides",
+      "fittings": "Raccords",
+      "gaskets": "Joints",
+      "bolts": "Goujons"
+    },
+    "searchPlaceholder": "Rechercher des produits...",
+    "inquire": "Se Renseigner",
+    "viewAllBtn": "Voir le Catalogue Complet",
+    "noResults": "Aucun produit ne correspond à vos filtres actuels",
+    "resetFilters": "Réinitialiser les Filtres"
+  },
+  "industries": {
+    "title": "Industries que Nous Servons",
+    "subtitle": "Fourniture de solutions de pipeline spécialisées pour des environnements industriels exigeants",
+    "oil": {
+      "title": "Pétrole et Gaz",
+      "text": "Composants de pipeline en amont, intermédiaire et en aval conçus pour des conditions extrêmes et répondant à des normes de sécurité strictes."
+    },
+    "marine": {
+      "title": "Marine",
+      "text": "Solutions de pipeline résistantes à la corrosion pour la construction navale, les plateformes offshore et les applications marines dans des environnements d'eau salée difficiles."
+    },
+    "power": {
+      "title": "Production d'Énergie",
+      "text": "Composants de tuyauterie à haute pression et haute température pour les centrales électriques conventionnelles et renouvelables, conçus pour la fiabilité."
+    },
+    "infra": {
+      "title": "Infrastructure",
+      "text": "Solutions de pipeline durables pour le traitement de l'eau, les projets municipaux et le développement des infrastructures urbaines."
+    }
+  },
+  "whyUs": {
+    "title": "Pourquoi Choisir Zeen International",
+    "subtitle": "Notre engagement envers l'excellence fait de nous le choix préféré pour les fournitures de pipeline industriel",
+    "global": {
+      "title": "Portée Mondiale",
+      "text": "Opérant dans plus de 30 pays avec des entrepôts stratégiquement situés pour des livraisons rapides dans le monde entier."
+    },
+    "quality": {
+      "title": "Assurance Qualité",
+      "text": "Certifiée ISO 9001:2015 avec des tests rigoureux et une documentation de traçabilité des matériaux."
+    },
+    "delivery": {
+      "title": "Livraison Rapide",
+      "text": "Gestion extensive des stocks et réseau logistique mondial pour garantir des livraisons ponctuelles."
+    },
+    "team": {
+      "title": "Équipe d'Experts",
+      "text": "Plus de 25 ans d'expérience dans l'industrie avec des connaissances spécialisées en ingénierie de pipeline."
+    },
+    "certifications": {
+      "title": "Nos Certifications et Partenaires"
+    }
+  },
+  "contact": {
+    "title": "Contactez-Nous",
+    "subtitle": "Contactez-nous pour des devis, des demandes de renseignements ou un support technique de notre équipe d'experts",
+    "form": {
+      "title": "Prendre Contact",
+      "name": "Nom Complet",
+      "company": "Entreprise",
+      "email": "Adresse Email",
+      "phone": "Numéro de Téléphone",
+      "inquiryType": "Type de Demande",
+      "selectType": "Sélectionnez le type de demande",
+      "quote": "Demander un Devis",
+      "product": "Information sur les Produits",
+      "technical": "Support Technique",
+      "other": "Autre",
+      "message": "Message",
+      "submit": "Soumettre la Demande",
+      "submitting": "Soumission...",
+      "success": {
+        "title": "Message Envoyé",
+        "message": "Nous vous répondrons dès que possible."
+      },
+      "error": {
+        "title": "Erreur",
+        "message": "Un problème est survenu lors de l'envoi de votre message. Veuillez réessayer."
+      }
+    },
+    "info": {
+      "title": "Nos Bureaux",
+      "headquarters": "Siège Social",
+      "address": "Jebel Ali Free Zone, Dubaï, EAU",
+      "phone": "Téléphone",
+      "email": "Email",
+      "hours": "Heures d'Ouverture",
+      "workdays": "Lundi - Vendredi: 8h00 - 18h00",
+      "social": "Connectez-Vous Avec Nous"
+    },
+    "map": "Emplacement Carte Interactive"
+  },
+  "footer": {
+    "about": "Zeen International est un fournisseur mondial de confiance de composants de pipeline industriel depuis 1995, desservant les clients dans les secteurs du pétrole et du gaz, de la marine, de la production d'énergie et des infrastructures.",
+    "quickLinks": "Liens Rapides",
+    "products": "Nos Produits",
+    "download": "Télécharger",
+    "catalogInfo": "Accédez à notre catalogue complet de produits et aux spécifications techniques au format PDF.",
+    "catalogBtn": "Télécharger le Catalogue",
+    "chat": "Chat en Direct",
+    "whatsapp": "Chat WhatsApp",
+    "copyright": "© 2023 Zeen International Pipeline Supply. Tous droits réservés.",
+    "terms": "Termes et Conditions",
+    "privacy": "Politique de Confidentialité",
+    "sitemap": "Plan du Site"
+  }
+}
