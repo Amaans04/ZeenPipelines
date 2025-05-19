@@ -1,0 +1,76 @@
+Color Theme Suggestion (Professional, Industrial, Modern)
+Inspired by the logo and industry:
+
+Primary Color: #e60000 (Bright Red – from logo)
+
+Dark Accent: #1a1a1a or #0f0f0f (Industrial Black/Grey)
+
+Secondary Highlight: #004aad (Steel Blue – industrial tone)
+
+Background / Surface: #f5f7fa (Soft white for contrast)
+
+Text Color: #2b2b2b (Almost black for legibility)
+
+🌐 Key Features to Include
+Hero Section
+
+Logo, tagline, and CTA (“Get a Quote” / “Download Catalog”)
+
+High-quality industrial background video or image
+
+About Us Section
+
+Timeline + values + certifications (ISO etc.)
+
+Product Catalog / Categories
+
+Pipes, Valves, Flanges, Fittings, Gaskets, Stud Bolts
+
+Grid view with filters and search
+
+Industries Served
+
+Oil & Gas, Marine, Power, Infrastructure
+
+Language Switcher
+
+English | Arabic | French | (use next-i18next if using Next.js)
+
+Why Choose Us
+
+Cards for: Global Reach, Quality, Fast Delivery, Experienced Team
+
+Certifications & Partners Carousel
+
+Contact Form + Map + Socials
+
+Responsive Design
+
+Tailwind CSS or Bootstrap 5 (Tailwind recommended)
+
+⚙️ Professional Prompt for Replit (Starter Code Generation)
+You can paste this in Replit (React + Tailwind or Next.js project):
+
+sql
+Copy code
+Create a professional, responsive B2B website for an industrial pipeline supply company called "Zeen International Pipeline Supply" using Tailwind CSS and React (or Next.js). The design should reflect a modern industrial look.
+
+Design Guidelines:
+- Use a red (#e60000), steel blue (#004aad), dark grey (#1a1a1a), and soft white (#f5f7fa) color scheme.
+- Homepage must have a hero section with the company logo, tagline ("Pipes. Valves. Flanges. Fittings. Gaskets. Stud Bolts."), and a call-to-action button.
+- Include sections: About Us, Products (with filterable cards), Industries Served, Why Choose Us (in cards), Partners, Certifications (carousel), and Contact Us.
+- Add a language switcher (English, Arabic, French) that updates all content accordingly.
+- Navigation bar should be sticky and collapse into a hamburger menu on mobile.
+- Footer should contain contact details, quick links, and a mini inquiry form.
+- Animate transitions and add smooth scroll behavior.
+- Optimize for SEO and accessibility (use semantic HTML).
+- Use mock JSON or local JSON files for product listings and FAQs.
+🚀 Bonus Suggestions
+Use Three.js or Lottie for slight animated icons or background elements.
+
+Add Live WhatsApp Chat widget.
+
+Include a Download Catalog PDF option.
+
+Add a Careers or Join Us section with simple form.
+
