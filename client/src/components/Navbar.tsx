@@ -52,12 +52,12 @@ const Navbar = () => {
               <ul className="flex space-x-6 font-condensed">
                 {navItems.map((item) => (
                   <li key={item.id}>
-                    <a
-                      href={`#${item.id}`}
+                    <Link
+                      href={item.id}
                       className="text-foreground hover:text-primary font-medium transition-colors"
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -91,12 +91,12 @@ const Navbar = () => {
                 FR
               </button>
             </div>
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="bg-primary text-white px-4 py-2 rounded font-medium hover:bg-primary/90 transition-all hidden md:block"
             >
               {t("nav.getQuote")}
-            </a>
+            </Link>
             <Button
               variant="ghost"
               size="icon"
@@ -114,13 +114,13 @@ const Navbar = () => {
             <ul className="space-y-3 font-condensed">
               {navItems.map((item) => (
                 <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
+                  <Link
+                    href={item.id}
                     className="block text-foreground hover:text-primary transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -151,13 +151,13 @@ const Navbar = () => {
               </button>
             </div>
             <div className="mt-4">
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 className="bg-primary text-white px-4 py-2 rounded font-medium hover:bg-primary/90 transition-all inline-block"
                 onClick={() => setIsOpen(false)}
               >
                 {t("nav.getQuote")}
-              </a>
+              </Link>
             </div>
           </div>
         )}

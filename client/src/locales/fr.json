@@ -3,6 +3,13 @@
     "title": "Zeen International Pipeline Supply - Solutions Globales pour Pipelines Industriels",
     "description": "Zeen International est un fournisseur mondial de confiance de composants de pipeline industriel depuis 1995, desservant les secteurs du pétrole et du gaz, de la marine, de la production d'énergie et des infrastructures."
   },
+  "home": {
+    "keyAreas": "Nos Domaines Clés",
+    "keyAreasSubtitle": "Explorez notre gamme complète de produits, les industries que nous servons et pourquoi les clients nous choisissent pour tous leurs besoins en approvisionnement de pipelines",
+    "productsSummary": "Composants de pipeline industriels de haute qualité comprenant tuyaux, vannes, brides, raccords, joints et goujons pour répondre exactement à vos spécifications.",
+    "industriesSummary": "Solutions spécialisées pour les secteurs du pétrole et du gaz, de la marine, de la production d'énergie et des infrastructures avec des composants et une expertise spécifiques aux applications.",
+    "whyUsSummary": "Assurance qualité certifiée ISO, portée mondiale avec des opérations dans plus de 30 pays, livraison rapide et expertise technique de pointe dans l'industrie."
+  },
   "nav": {
     "home": "Accueil",
     "about": "À Propos",
