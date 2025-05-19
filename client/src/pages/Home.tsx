@@ -35,7 +35,14 @@ const ClientMarquee = () => {
   );
 };
 
-const FeatureCard = ({ title, description, icon, link }) => {
+interface FeatureCardProps {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  link: string;
+}
+
+const FeatureCard = ({ title, description, icon, link }: FeatureCardProps) => {
   return (
     <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all">
       <div className="text-primary mb-4">{icon}</div>
