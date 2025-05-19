@@ -158,5 +158,27 @@
     "terms": "Terms & Conditions",
     "privacy": "Privacy Policy",
     "sitemap": "Sitemap"
+  },
+  "leadForm": {
+    "title": "Request Information",
+    "subtitle": "Contact us to discuss your pipeline supply needs",
+    "nameLabel": "Full Name",
+    "namePlaceholder": "Enter your name",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your email",
+    "companyLabel": "Company Name",
+    "companyPlaceholder": "Enter your company name",
+    "phoneLabel": "Phone Number",
+    "phonePlaceholder": "Enter your phone number",
+    "messageLabel": "Your Requirements",
+    "messagePlaceholder": "Tell us about your project or inquiry",
+    "subscribeLabel": "Subscribe to our newsletter for industry updates and product information",
+    "submitButton": "Submit Request"
+  },
+  "form": {
+    "successTitle": "Request Submitted",
+    "successMessage": "Thank you for your inquiry. Our team will contact you shortly.",
+    "errorTitle": "Submission Error",
+    "errorMessage": "There was a problem submitting your request. Please try again."
   }
 }

@@ -6,6 +6,8 @@ import Hero from "@/components/Hero";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
+import LeadGenerationForm from "@/components/LeadGenerationForm";
+import LeadFormOverlay from "@/components/LeadFormOverlay";
 import {
   Carousel,
   CarouselContent,
@@ -208,6 +210,9 @@ const Home = () => {
         <html lang={i18n.language} />
       </Helmet>
       
+      {/* Lead Form Overlay - displays 10 seconds after page load */}
+      <LeadFormOverlay />
+      
       <Hero />
       
       <ClientMarquee />
@@ -352,6 +357,16 @@ const Home = () => {
           </Carousel>
         </div>
       </section>
+      
+      {/* Lead Generation Form Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <LeadGenerationForm />
+      </motion.div>
     </>
   );
 };
