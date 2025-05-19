@@ -17,30 +17,88 @@ import {
 } from "@/components/ui/carousel";
 
 const ClientMarquee = () => {
-  // List of notable clients/companies served
+  // List of notable clients/companies served with their logos
   const clients = [
-    "Saudi Aramco", "ADNOC", "Qatar Gas", "Kuwait Oil Company", "Shell", 
-    "ExxonMobil", "BP", "Total Energies", "Petrofac", "McDermott", 
-    "Saipem", "Worley Parsons", "NPCC"
+    {
+      name: "Saudi Aramco",
+      logo: "https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Saudi_Aramco_logo.svg/440px-Saudi_Aramco_logo.svg.png"
+    },
+    {
+      name: "ADNOC",
+      logo: "https://upload.wikimedia.org/wikipedia/en/thumb/7/75/Abu_Dhabi_National_Oil_Company_logo.svg/1200px-Abu_Dhabi_National_Oil_Company_logo.svg.png"
+    },
+    {
+      name: "Qatar Gas",
+      logo: "https://upload.wikimedia.org/wikipedia/en/9/94/Qatargas_logo.svg"
+    },
+    {
+      name: "Kuwait Oil Company",
+      logo: "https://upload.wikimedia.org/wikipedia/en/3/32/Kuwait_Oil_Company_logo.png"
+    },
+    {
+      name: "Shell",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Shell_logo.svg/1200px-Shell_logo.svg.png"
+    }, 
+    {
+      name: "ExxonMobil",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ExxonMobil_logo.svg/1200px-ExxonMobil_logo.svg.png"
+    },
+    {
+      name: "BP",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/BP_logo.svg/1200px-BP_logo.svg.png"
+    },
+    {
+      name: "Total Energies",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/TotalEnergies_logo.svg/2560px-TotalEnergies_logo.svg.png"
+    },
+    {
+      name: "Petrofac",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Petrofac.svg"
+    },
+    {
+      name: "McDermott",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/McDermott_Logo.svg/2560px-McDermott_Logo.svg.png"
+    },
+    {
+      name: "Saipem",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Saipem_logo.svg/2560px-Saipem_logo.svg.png"
+    },
+    {
+      name: "Worley",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Worley_logo.svg/1280px-Worley_logo.svg.png"
+    },
+    {
+      name: "NPCC",
+      logo: "https://www.npcc.ae/wp-content/uploads/2022/03/NPCC-logo.svg"
+    }
   ];
   
   return (
-    <div className="bg-secondary text-white py-3 overflow-hidden">
+    <div className="bg-white py-6 border-t border-b border-gray-200 overflow-hidden">
+      <div className="container mx-auto px-4 mb-3">
+        <h4 className="text-center text-lg font-semibold text-gray-700">Our Trusted Clients</h4>
+      </div>
       <div className="animate-marquee whitespace-nowrap">
-        <span className="mx-4 text-lg font-semibold">Our Trusted Clients:</span>
         {clients.map((client, index) => (
-          <span key={index} className="mx-4 text-lg">
-            {client}
-            <span className="mx-2">•</span>
-          </span>
+          <div key={index} className="inline-block mx-6">
+            <img 
+              src={client.logo} 
+              alt={client.name} 
+              className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all" 
+              title={client.name}
+            />
+          </div>
         ))}
         {/* Duplicate for seamless looping */}
-        <span className="mx-4 text-lg font-semibold">Our Trusted Clients:</span>
         {clients.map((client, index) => (
-          <span key={index + 100} className="mx-4 text-lg">
-            {client}
-            <span className="mx-2">•</span>
-          </span>
+          <div key={index + 100} className="inline-block mx-6">
+            <img 
+              src={client.logo} 
+              alt={client.name} 
+              className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all" 
+              title={client.name}
+            />
+          </div>
         ))}
       </div>
     </div>
