@@ -1,27 +1,17 @@
-import { Helmet } from "react-helmet";
-import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 import About from "@/components/About";
+import { useTranslation } from "react-i18next";
 
-const AboutPage = () => {
-  const { t, i18n } = useTranslation();
-  
+export default function AboutPage() {
+  const { t } = useTranslation();
+
   return (
     <>
       <Helmet>
-        <title>{t("about.title")} | Zeen International</title>
-        <meta name="description" content={t("about.subtitle")} />
-        <meta property="og:title" content={t("about.title")} />
-        <meta property="og:description" content={t("about.subtitle")} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://zeeninternational.com/about" />
-        <html lang={i18n.language} />
+        <title>{t("about.title")} | Zeen Pipes</title>
+        <meta name="description" content={t("about.description")} />
       </Helmet>
-      
-      <div className="pt-24">
-        <About />
-      </div>
+      <About />
     </>
   );
-};
-
-export default AboutPage;
+}

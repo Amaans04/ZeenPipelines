@@ -62,11 +62,23 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-[hsl(var(--border))];
+  }
+
+  html {
+    @apply h-full overflow-x-hidden;
   }
 
   body {
-    @apply bg-[#f5f7fa] text-[#2b2b2b] font-sans antialiased;
+    @apply h-full bg-[#f5f7fa] text-[#2b2b2b] font-sans antialiased overflow-x-hidden;
+    width: 100vw;
+    position: relative;
+  }
+
+  #root {
+    @apply h-full overflow-x-hidden;
+    width: 100%;
+    position: relative;
   }
 
   h1, h2, h3, h4, h5, h6 {

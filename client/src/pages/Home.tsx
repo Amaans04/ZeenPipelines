@@ -4,10 +4,10 @@ import { Link } from "wouter";
 import { ArrowRight, Star, Quote } from "lucide-react";
 import Hero from "@/components/Hero";
 import { motion } from "framer-motion";
-import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import LeadGenerationForm from "@/components/LeadGenerationForm";
 import LeadFormOverlay from "@/components/LeadFormOverlay";
+import { products } from "@/data/products";
 import {
   Carousel,
   CarouselContent,
@@ -18,65 +18,18 @@ import {
 
 const ClientMarquee = () => {
   // List of notable clients/companies served with their logos
-  const clients = [
-    {
-      name: "Saudi Aramco",
-      logo: "https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Saudi_Aramco_logo.svg/440px-Saudi_Aramco_logo.svg.png"
-    },
-    {
-      name: "ADNOC",
-      logo: "https://upload.wikimedia.org/wikipedia/en/thumb/7/75/Abu_Dhabi_National_Oil_Company_logo.svg/1200px-Abu_Dhabi_National_Oil_Company_logo.svg.png"
-    },
-    {
-      name: "Qatar Gas",
-      logo: "https://upload.wikimedia.org/wikipedia/en/9/94/Qatargas_logo.svg"
-    },
-    {
-      name: "Kuwait Oil Company",
-      logo: "https://upload.wikimedia.org/wikipedia/en/3/32/Kuwait_Oil_Company_logo.png"
-    },
-    {
-      name: "Shell",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Shell_logo.svg/1200px-Shell_logo.svg.png"
-    }, 
-    {
-      name: "ExxonMobil",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ExxonMobil_logo.svg/1200px-ExxonMobil_logo.svg.png"
-    },
-    {
-      name: "BP",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/BP_logo.svg/1200px-BP_logo.svg.png"
-    },
-    {
-      name: "Total Energies",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/TotalEnergies_logo.svg/2560px-TotalEnergies_logo.svg.png"
-    },
-    {
-      name: "Petrofac",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Petrofac.svg"
-    },
-    {
-      name: "McDermott",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/McDermott_Logo.svg/2560px-McDermott_Logo.svg.png"
-    },
-    {
-      name: "Saipem",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Saipem_logo.svg/2560px-Saipem_logo.svg.png"
-    },
-    {
-      name: "Worley",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Worley_logo.svg/1280px-Worley_logo.svg.png"
-    },
-    {
-      name: "NPCC",
-      logo: "https://www.npcc.ae/wp-content/uploads/2022/03/NPCC-logo.svg"
-    }
-  ];
+  const clients = Array.from({ length: 10 }, (_, i) => ({
+    name: `Company ${i + 1}`,
+    logo: `/logos/cmpimg-${i + 1}.webp`
+  }));
   
   return (
     <div className="bg-white py-6 border-t border-b border-gray-200 overflow-hidden">
       <div className="container mx-auto px-4 mb-3">
-        <h4 className="text-center text-lg font-semibold text-gray-700">Our Trusted Clients</h4>
+        <h4 className="text-center text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
+          Our Trusted Clients
+        </h4>
+        <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
       </div>
       <div className="animate-marquee whitespace-nowrap">
         {clients.map((client, index) => (
@@ -86,6 +39,10 @@ const ClientMarquee = () => {
               alt={client.name} 
               className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all" 
               title={client.name}
+              onError={(e) => {
+                console.error(`Failed to load image: ${client.logo}`);
+                e.currentTarget.style.display = 'none';
+              }}
             />
           </div>
         ))}
@@ -97,6 +54,10 @@ const ClientMarquee = () => {
               alt={client.name} 
               className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all" 
               title={client.name}
+              onError={(e) => {
+                console.error(`Failed to load image: ${client.logo}`);
+                e.currentTarget.style.display = 'none';
+              }}
             />
           </div>
         ))}
@@ -133,9 +94,11 @@ interface Product {
   id: string;
   category: string;
   name: string;
-  description: string;
-  spec: string;
+  types: string[];
+  materialGrades: string[];
   image: string;
+  features?: string[];
+  sizes?: string[];
 }
 
 const ProductCard = ({ product }: { product: Product }) => {
@@ -157,10 +120,10 @@ const ProductCard = ({ product }: { product: Product }) => {
           {product.category}
         </div>
         <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-        <p className="text-gray-600 mb-3 line-clamp-2">{product.description}</p>
-        <p className="text-sm text-gray-500 mb-4">{product.spec}</p>
+        <p className="text-gray-600 mb-3 line-clamp-2">{product.types.join(", ")}</p>
+        <p className="text-sm text-gray-500 mb-4">{product.materialGrades.join(", ")}</p>
         <Link
-          href={`/products#${product.id}`}
+          href={`/products/${product.id}`}
           className="text-primary hover:text-secondary font-medium flex items-center"
         >
           View Details
@@ -243,10 +206,6 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 
 const Home = () => {
   const { t, i18n } = useTranslation();
-  
-  const { data: products = [] } = useQuery<Product[]>({
-    queryKey: ["/api/products"],
-  });
   
   // Select featured products (first 3 from different categories)
   const featuredProducts = products

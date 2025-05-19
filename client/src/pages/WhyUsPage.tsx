@@ -1,27 +1,17 @@
-import { Helmet } from "react-helmet";
-import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import { useTranslation } from "react-i18next";
 
-const WhyUsPage = () => {
-  const { t, i18n } = useTranslation();
-  
+export default function WhyUsPage() {
+  const { t } = useTranslation();
+
   return (
     <>
       <Helmet>
-        <title>{t("whyUs.title")} | Zeen International</title>
-        <meta name="description" content={t("whyUs.subtitle")} />
-        <meta property="og:title" content={t("whyUs.title")} />
-        <meta property="og:description" content={t("whyUs.subtitle")} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://zeeninternational.com/why-us" />
-        <html lang={i18n.language} />
+        <title>{t("whyUs.title")} | Zeen Pipes</title>
+        <meta name="description" content={t("whyUs.description")} />
       </Helmet>
-      
-      <div className="pt-24">
-        <WhyChooseUs />
-      </div>
+      <WhyChooseUs />
     </>
   );
-};
-
-export default WhyUsPage;
+}

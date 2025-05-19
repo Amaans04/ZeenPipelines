@@ -42,7 +42,7 @@ const Navbar = () => {
         scrolled ? "bg-white shadow-md" : "bg-white"
       }`}
     >
-      <div className="container mx-auto px-4 py-3">
+      <div className="w-full max-w-[calc(100vw-17px)] mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <Link to="/">
@@ -110,7 +110,7 @@ const Navbar = () => {
 
         {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden pt-4 pb-3 border-t mt-3">
+          <div className="md:hidden pt-4 pb-3 border-t mt-3 max-h-[calc(100vh-72px)] overflow-y-auto w-full">
             <ul className="space-y-3 font-condensed">
               {navItems.map((item) => (
                 <li key={item.id}>

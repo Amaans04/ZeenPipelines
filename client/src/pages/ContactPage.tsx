@@ -17,9 +17,7 @@ const ContactPage = () => {
         <html lang={i18n.language} />
       </Helmet>
       
-      <div className="pt-24">
-        <Contact />
-      </div>
+      <Contact />
     </>
   );
 };

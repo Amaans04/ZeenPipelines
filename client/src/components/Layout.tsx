@@ -12,9 +12,9 @@ const Layout = ({ children }: LayoutProps) => {
   const { language } = useLanguage();
   
   return (
-    <div className={language === "ar" ? "rtl" : ""}>
+    <div className={`min-h-screen flex flex-col w-full overflow-x-hidden ${language === "ar" ? "rtl" : ""}`}>
       <Navbar />
-      <main>{children}</main>
+      <main className="flex-1 pt-[72px] w-full overflow-x-hidden">{children}</main>
       <Footer />
       <WhatsAppWidget />
     </div>

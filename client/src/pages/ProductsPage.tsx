@@ -17,9 +17,7 @@ const ProductsPage = () => {
         <html lang={i18n.language} />
       </Helmet>
       
-      <div className="pt-24">
-        <Products />
-      </div>
+      <Products />
     </>
   );
 };

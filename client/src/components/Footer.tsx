@@ -187,9 +187,24 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-500 text-sm mb-4 md:mb-0">
-              {t("footer.copyright")}
-            </p>
+            <div className="flex flex-col items-center md:items-start space-y-2 mb-4 md:mb-0">
+              <p className="text-gray-500 text-sm">
+                © 2025 Zeen International Pipeline Supply. All rights reserved.
+              </p>
+              <a
+                href="https://theapexdev.site"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 hover:text-primary transition-all text-sm flex items-center group"
+              >
+                <span className="mr-1">Crafted with</span>
+                <span className="text-red-500 mx-1 group-hover:scale-110 transition-transform">❤</span>
+                <span className="mr-1">by</span>
+                <span className="font-semibold bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent group-hover:from-blue-500 group-hover:to-primary transition-all">
+                  TheApexDev
+                </span>
+              </a>
+            </div>
             <div className="flex space-x-4">
               <a
                 href="#"

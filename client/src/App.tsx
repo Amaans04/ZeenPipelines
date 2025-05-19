@@ -1,44 +1,37 @@
-import { Switch, Route } from "wouter";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "./lib/queryClient";
+import { Route, Switch } from "wouter";
+import { HelmetProvider } from "react-helmet-async";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { useScrollToTop } from "@/hooks/useScrollToTop";
-import NotFound from "@/pages/not-found";
+import Layout from "@/components/Layout";
 import Home from "@/pages/Home";
 import AboutPage from "@/pages/AboutPage";
-import ProductsPage from "@/pages/ProductsPage";
-import IndustriesPage from "@/pages/IndustriesPage";
-import WhyUsPage from "@/pages/WhyUsPage";
+import Products from "@/components/Products";
+import ProductDetails from "@/pages/ProductDetails";
 import ContactPage from "@/pages/ContactPage";
-import Layout from "@/components/Layout";
+import WhyUsPage from "@/pages/WhyUsPage";
+import IndustriesPage from "@/pages/IndustriesPage";
+import NotFound from "@/pages/NotFound";
 
-function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/about" component={AboutPage} />
-      <Route path="/products" component={ProductsPage} />
-      <Route path="/industries" component={IndustriesPage} />
-      <Route path="/why-us" component={WhyUsPage} />
-      <Route path="/contact" component={ContactPage} />
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
+const queryClient = new QueryClient();
 
 function App() {
-  // This hook will scroll to top on route changes
-  useScrollToTop();
-  
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
+      <HelmetProvider>
         <Layout>
-          <Toaster />
-          <Router />
+          <Switch>
+            <Route path="/" component={Home} />
+            <Route path="/about" component={AboutPage} />
+            <Route path="/products" component={Products} />
+            <Route path="/products/:id" component={ProductDetails} />
+            <Route path="/contact" component={ContactPage} />
+            <Route path="/why-us" component={WhyUsPage} />
+            <Route path="/industries" component={IndustriesPage} />
+            <Route component={NotFound} />
+          </Switch>
         </Layout>
-      </TooltipProvider>
+        <Toaster />
+      </HelmetProvider>
     </QueryClientProvider>
   );
 }

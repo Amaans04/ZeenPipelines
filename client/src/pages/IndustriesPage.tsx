@@ -1,27 +1,17 @@
-import { Helmet } from "react-helmet";
-import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 import Industries from "@/components/Industries";
+import { useTranslation } from "react-i18next";
 
-const IndustriesPage = () => {
-  const { t, i18n } = useTranslation();
-  
+export default function IndustriesPage() {
+  const { t } = useTranslation();
+
   return (
     <>
       <Helmet>
-        <title>{t("industries.title")} | Zeen International</title>
-        <meta name="description" content={t("industries.subtitle")} />
-        <meta property="og:title" content={t("industries.title")} />
-        <meta property="og:description" content={t("industries.subtitle")} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://zeeninternational.com/industries" />
-        <html lang={i18n.language} />
+        <title>{t("industries.title")} | Zeen Pipes</title>
+        <meta name="description" content={t("industries.description")} />
       </Helmet>
-      
-      <div className="pt-24">
-        <Industries />
-      </div>
+      <Industries />
     </>
   );
-};
-
-export default IndustriesPage;
+}

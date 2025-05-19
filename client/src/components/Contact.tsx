@@ -61,9 +61,9 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-[#f5f7fa]">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+    <section id="contact" className="py-12 bg-[#f5f7fa]">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-condensed mb-4">
             {t("contact.title")}
           </h2>
@@ -276,15 +276,6 @@ const Contact = () => {
                   >
                     <Instagram className="h-5 w-5" />
                   </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-md overflow-hidden h-64">
-              <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <MapPin className="h-8 w-8 mx-auto mb-2" />
-                  <p>{t("contact.map")}</p>
                 </div>
               </div>
             </div>
