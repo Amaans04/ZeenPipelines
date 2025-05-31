@@ -5,6 +5,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.svg";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -37,34 +38,53 @@ const Navbar = () => {
   ];
 
   return (
-    <header
-      className={`fixed w-full z-50 transition-all duration-300 ${
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`fixed w-[calc(100%-10px)] z-40 transition-all duration-300 ${
         scrolled ? "bg-white shadow-md" : "bg-white"
       }`}
     >
-      <div className="w-full max-w-[calc(100vw-17px)] mx-auto px-4 py-3">
+      <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <Link to="/">
-              <img src={logo} alt="Zeen International Pipeline Supply Logo" className="h-12" />
-            </Link>
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <Link to="/">
+                <img src={logo} alt="Zeen International Pipeline Supply Logo" className="h-12" />
+              </Link>
+            </motion.div>
             <div className="ml-4 hidden md:block">
               <ul className="flex space-x-6 font-condensed">
-                {navItems.map((item) => (
-                  <li key={item.id}>
+                {navItems.map((item, index) => (
+                  <motion.li
+                    key={item.id}
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                  >
                     <Link
                       href={item.id}
                       className="text-foreground hover:text-primary font-medium transition-colors"
                     >
                       {item.label}
                     </Link>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>
           </div>
 
-          <div className="flex items-center space-x-4">
+          <motion.div
+            initial={{ x: 20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex items-center space-x-4"
+          >
             <div className="hidden md:flex items-center space-x-2 border-r pr-4 border-gray-200">
               <button
                 className={`px-2 py-1 text-sm font-medium rounded hover:bg-gray-100 transition-all ${
@@ -105,64 +125,87 @@ const Navbar = () => {
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
-          </div>
+          </motion.div>
         </div>
 
         {/* Mobile menu */}
-        {isOpen && (
-          <div className="md:hidden pt-4 pb-3 border-t mt-3 max-h-[calc(100vh-72px)] overflow-y-auto w-full">
-            <ul className="space-y-3 font-condensed">
-              {navItems.map((item) => (
-                <li key={item.id}>
-                  <Link
-                    href={item.id}
-                    className="block text-foreground hover:text-primary transition-colors"
-                    onClick={() => setIsOpen(false)}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden pt-4 pb-3 border-t mt-3 max-h-[calc(100vh-72px)] overflow-y-auto"
+            >
+              <ul className="space-y-3 font-condensed">
+                {navItems.map((item, index) => (
+                  <motion.li
+                    key={item.id}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
                   >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="flex items-center space-x-2 mt-4 pt-3 border-t border-gray-200">
-              <button
-                className={`px-2 py-1 text-sm font-medium rounded hover:bg-gray-100 transition-all ${
-                  language === "en" ? "bg-gray-100" : ""
-                }`}
-                onClick={() => changeLanguage("en")}
+                    <Link
+                      href={item.id}
+                      className="block text-foreground hover:text-primary transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="flex items-center space-x-2 mt-4 pt-3 border-t border-gray-200"
               >
-                English
-              </button>
-              <button
-                className={`px-2 py-1 text-sm font-medium rounded hover:bg-gray-100 transition-all ${
-                  language === "ar" ? "bg-gray-100" : ""
-                }`}
-                onClick={() => changeLanguage("ar")}
+                <button
+                  className={`px-2 py-1 text-sm font-medium rounded hover:bg-gray-100 transition-all ${
+                    language === "en" ? "bg-gray-100" : ""
+                  }`}
+                  onClick={() => changeLanguage("en")}
+                >
+                  English
+                </button>
+                <button
+                  className={`px-2 py-1 text-sm font-medium rounded hover:bg-gray-100 transition-all ${
+                    language === "ar" ? "bg-gray-100" : ""
+                  }`}
+                  onClick={() => changeLanguage("ar")}
+                >
+                  Arabic
+                </button>
+                <button
+                  className={`px-2 py-1 text-sm font-medium rounded hover:bg-gray-100 transition-all ${
+                    language === "fr" ? "bg-gray-100" : ""
+                  }`}
+                  onClick={() => changeLanguage("fr")}
+                >
+                  French
+                </button>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="mt-4"
               >
-                Arabic
-              </button>
-              <button
-                className={`px-2 py-1 text-sm font-medium rounded hover:bg-gray-100 transition-all ${
-                  language === "fr" ? "bg-gray-100" : ""
-                }`}
-                onClick={() => changeLanguage("fr")}
-              >
-                French
-              </button>
-            </div>
-            <div className="mt-4">
-              <Link
-                href="/contact"
-                className="bg-primary text-white px-4 py-2 rounded font-medium hover:bg-primary/90 transition-all inline-block"
-                onClick={() => setIsOpen(false)}
-              >
-                {t("nav.getQuote")}
-              </Link>
-            </div>
-          </div>
-        )}
+                <Link
+                  href="/contact"
+                  className="bg-primary text-white px-4 py-2 rounded font-medium hover:bg-primary/90 transition-all inline-block"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t("nav.getQuote")}
+                </Link>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </header>
+    </motion.header>
   );
 };
 

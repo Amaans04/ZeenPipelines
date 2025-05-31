@@ -15,6 +15,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useLanguage } from "@/hooks/useLanguage";
+import { testimonials } from "@/data/testimonials";
+import { Button } from "@/components/ui/button";
+import PageTransition from "@/components/PageTransition";
 
 const ClientMarquee = () => {
   // List of notable clients/companies served with their logos
@@ -143,33 +147,6 @@ interface Testimonial {
   rating: number;
 }
 
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    name: "Ahmed Al-Farsi",
-    title: "Procurement Manager",
-    company: "Gulf Petrochemicals",
-    text: "Zeen International has been our trusted supplier for over 5 years. Their quality products and exceptional service have never disappointed us. Even during the most urgent shutdowns, they managed to deliver on time.",
-    rating: 5
-  },
-  {
-    id: 2,
-    name: "Sarah Thompson",
-    title: "Project Director",
-    company: "GCC Pipeline Solutions",
-    text: "We've worked with many suppliers, but Zeen stands out for their technical expertise and commitment to quality. Their team goes above and beyond to ensure that specifications are met precisely.",
-    rating: 5
-  },
-  {
-    id: 3,
-    name: "Mohammed Al-Dosari",
-    title: "Operations Manager",
-    company: "Petrochemical Industries Co.",
-    text: "During a critical plant shutdown, Zeen International delivered essential components 2 days ahead of schedule. Their responsiveness and reliability have made them our primary supplier for all pipeline materials.",
-    rating: 5
-  }
-];
-
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
     <Card className="border-0 shadow-md h-full">
@@ -205,18 +182,33 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 };
 
 const Home = () => {
-  const { t, i18n } = useTranslation();
-  
-  // Select featured products (first 3 from different categories)
-  const featuredProducts = products
-    .filter((product, index, self) => 
-      // Only include the first product from each category
-      index === self.findIndex(p => p.category === product.category)
-    )
-    .slice(0, 3);
-  
+  const { t } = useTranslation();
+  const { language } = useLanguage();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <>
+    <PageTransition>
       <Helmet>
         <title>{t("meta.title")}</title>
         <meta name="description" content={t("meta.description")} />
@@ -224,7 +216,7 @@ const Home = () => {
         <meta property="og:description" content={t("meta.description")} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://zeeninternational.com" />
-        <html lang={i18n.language} />
+        <html lang={language} />
       </Helmet>
       
       {/* Lead Form Overlay - displays 10 seconds after page load */}
@@ -239,26 +231,16 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
+              <div>
                 <img 
                   src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?auto=format&fit=crop&w=1200&h=800" 
                   alt="Steel Pipes" 
                   className="rounded-lg shadow-lg w-full h-auto object-cover"
                 />
-              </motion.div>
+              </div>
             </div>
             <div className="lg:w-1/2">
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
+              <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
                   Premier Steel Pipe Supplier
                 </h2>
@@ -283,108 +265,110 @@ const Home = () => {
                   <span>Read More</span>
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
       </section>
       
       {/* Featured Products Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-condensed mb-4">
-              Featured Products
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-condensed">
+              {t("home.featuredProducts.title")}
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Explore our high-quality industrial pipeline products trusted by leading companies worldwide
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              {t("home.featuredProducts.subtitle")}
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProducts.map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {products.slice(0, 3).map((product, index) => (
+              <motion.div key={product.id} variants={itemVariants}>
                 <ProductCard product={product} />
               </motion.div>
             ))}
-          </div>
+          </motion.div>
           
-          <div className="text-center mt-12">
-            <Link 
-              href="/products" 
-              className="bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-md font-medium transition-all inline-flex items-center"
-            >
-              <span>View All Products</span>
-              <ArrowRight className="ml-2 h-5 w-5" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-center mt-12"
+          >
+            <Link href="/products">
+              <Button variant="outline" size="lg">
+                {t("home.featuredProducts.viewAll")}
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
       
       {/* Testimonials Section */}
-      <section className="py-20 bg-[#f5f7fa]">
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-condensed mb-4">
-              What Our Clients Say
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-condensed">
+              {t("home.testimonials.title")}
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Trusted by industry leaders for our reliability, quality and exceptional service
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              {t("home.testimonials.subtitle")}
             </p>
           </motion.div>
           
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full max-w-6xl mx-auto"
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            <CarouselContent>
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
-                  <div className="h-full">
-                    <TestimonialCard testimonial={testimonial} />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="flex justify-center mt-8">
-              <CarouselPrevious className="mr-2" />
-              <CarouselNext />
-            </div>
-          </Carousel>
+            {testimonials.slice(0, 3).map((testimonial, index) => (
+              <motion.div key={testimonial.id} variants={itemVariants}>
+                <TestimonialCard testimonial={testimonial} />
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
       
       {/* Lead Generation Form Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <LeadGenerationForm />
-      </motion.div>
-    </>
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto"
+          >
+            <LeadGenerationForm />
+          </motion.div>
+        </div>
+      </section>
+    </PageTransition>
   );
 };
 

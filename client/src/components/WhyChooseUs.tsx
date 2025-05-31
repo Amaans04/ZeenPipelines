@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
-import { Globe, Award, Truck, Users, Target, Eye, BarChart3, Heart } from "lucide-react";
+import { Globe, Award, Truck, Users, Target, Eye, BarChart3, Heart, Shield, Clock, Headphones, LucideIcon } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { motion } from "framer-motion";
 
@@ -19,10 +19,10 @@ interface AnimatedSectionProps {
 const AnimatedSection = ({ children, delay = 0 }: AnimatedSectionProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8, delay }}
+      transition={{ duration: 0.6 }}
     >
       {children}
     </motion.div>
@@ -36,21 +36,30 @@ interface CompanyValueProps {
   index: number;
 }
 
-const CompanyValue = ({ icon, title, description, index }: CompanyValueProps) => {
+const CompanyValue = ({
+  icon: Icon,
+  title,
+  description,
+}: {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}) => {
   return (
     <motion.div
-      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.2 * index }}
-      className="bg-white p-6 rounded-lg shadow-md mb-5 border-l-4 border-secondary"
+      transition={{ duration: 0.5 }}
+      whileHover={{ scale: 1.05 }}
+      className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all"
     >
-      <div className="flex items-start">
-        <div className="bg-primary/10 p-3 rounded-full mr-4">
-          {icon}
+      <div className="flex items-start space-x-4">
+        <div className="bg-primary/10 p-3 rounded-lg">
+          <Icon className="h-6 w-6 text-primary" />
         </div>
         <div>
-          <h4 className="text-lg font-bold mb-2">{title}</h4>
+          <h3 className="text-lg font-semibold mb-2">{title}</h3>
           <p className="text-gray-600">{description}</p>
         </div>
       </div>
@@ -153,6 +162,39 @@ const WhyChooseUs = () => {
     }
   };
 
+  const values = [
+    {
+      icon: Shield,
+      title: t("whyUs.values.quality.title"),
+      description: t("whyUs.values.quality.description"),
+    },
+    {
+      icon: Truck,
+      title: t("whyUs.values.delivery.title"),
+      description: t("whyUs.values.delivery.description"),
+    },
+    {
+      icon: Clock,
+      title: t("whyUs.values.reliability.title"),
+      description: t("whyUs.values.reliability.description"),
+    },
+    {
+      icon: Users,
+      title: t("whyUs.values.expertise.title"),
+      description: t("whyUs.values.expertise.description"),
+    },
+    {
+      icon: Award,
+      title: t("whyUs.values.certification.title"),
+      description: t("whyUs.values.certification.description"),
+    },
+    {
+      icon: Headphones,
+      title: t("whyUs.values.support.title"),
+      description: t("whyUs.values.support.description"),
+    },
+  ];
+
   return (
     <section className="py-20 bg-[#f5f7fa]">
       <div className="container mx-auto px-4">
@@ -241,17 +283,23 @@ const WhyChooseUs = () => {
               <div className="absolute top-1/2 left-0 right-0 h-px bg-gray-300 -z-0"></div>
             </h3>
             
-            <div className="grid md:grid-cols-2 gap-6">
-              {companyValues.map((value, index) => (
-                <CompanyValue
-                  key={index}
-                  icon={value.icon}
-                  title={value.title}
-                  description={value.description}
-                  index={index}
-                />
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                visible: {
+                  transition: {
+                    staggerChildren: 0.1,
+                  },
+                },
+              }}
+              className="grid md:grid-cols-2 gap-6"
+            >
+              {values.map((value, index) => (
+                <CompanyValue key={index} {...value} />
               ))}
-            </div>
+            </motion.div>
           </div>
         </AnimatedSection>
 
