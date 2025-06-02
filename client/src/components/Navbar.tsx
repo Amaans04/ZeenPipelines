@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -12,6 +12,7 @@ const Navbar = () => {
   const { language, changeLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,9 +23,20 @@ const Navbar = () => {
       }
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isOpen && menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    document.addEventListener("mousedown", handleClickOutside);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -42,7 +54,7 @@ const Navbar = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed w-[calc(100%-10px)] z-40 transition-all duration-300 ${
+      className={`fixed w-[calc(100%-2px)] z-40 transition-all duration-300 ${
         scrolled ? "bg-white shadow-md" : "bg-white"
       }`}
     >
@@ -132,6 +144,7 @@ const Navbar = () => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
+              ref={menuRef}
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}

@@ -19,6 +19,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { testimonials } from "@/data/testimonials";
 import { Button } from "@/components/ui/button";
 import PageTransition from "@/components/PageTransition";
+import { useLocation } from "wouter";
 
 const ClientMarquee = () => {
   // List of notable clients/companies served with their logos
@@ -106,11 +107,13 @@ interface Product {
 }
 
 const ProductCard = ({ product }: { product: Product }) => {
+  const [, setLocation] = useLocation();
   return (
     <motion.div 
       whileHover={{ y: -5 }}
       transition={{ duration: 0.3 }}
-      className="bg-white rounded-lg shadow-md overflow-hidden"
+      className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer"
+      onClick={() => setLocation(`/products/${product.id}`)}
     >
       <div className="h-48 overflow-hidden">
         <img 
@@ -126,13 +129,10 @@ const ProductCard = ({ product }: { product: Product }) => {
         <h3 className="text-xl font-bold mb-2">{product.name}</h3>
         <p className="text-gray-600 mb-3 line-clamp-2">{product.types.join(", ")}</p>
         <p className="text-sm text-gray-500 mb-4">{product.materialGrades.join(", ")}</p>
-        <Link
-          href={`/products/${product.id}`}
-          className="text-primary hover:text-secondary font-medium flex items-center"
-        >
+        <div className="text-primary hover:text-secondary font-medium flex items-center">
           View Details
           <ArrowRight className="ml-1 h-4 w-4" />
-        </Link>
+        </div>
       </div>
     </motion.div>
   );
@@ -233,7 +233,7 @@ const Home = () => {
             <div className="lg:w-1/2">
               <div>
                 <img 
-                  src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?auto=format&fit=crop&w=1200&h=800" 
+                  src="/products/hero img.webp" 
                   alt="Steel Pipes" 
                   className="rounded-lg shadow-lg w-full h-auto object-cover"
                 />
@@ -285,7 +285,7 @@ const Home = () => {
               {t("home.featuredProducts.title")}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              {t("home.featuredProducts.subtitle")}
+              {t("home.featuredProducts.subtitle")} 
             </p>
           </motion.div>
           
