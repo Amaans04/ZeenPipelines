@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
-import { Download } from "lucide-react";
+import { Download, Link } from "lucide-react";
 import { FaWhatsapp, FaLinkedinIn, FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
-import logo from "@/assets/logo.svg";
+import logo from "../assets/logo.svg";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -11,11 +11,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div>
-            <img
-              src={logo}
-              alt="Zeen International Pipeline Supply Logo"
-              className="h-12 mb-6 brightness-0 invert"
-            />
+                <img src={logo} alt="Zeen International Pipeline Supply Logo" className="h-12 rounded-full" />
             <p className="text-gray-400 mb-6">{t("footer.about")}</p>
             <div className="flex space-x-4">
               <a
@@ -175,11 +171,11 @@ const Footer = () => {
                 {t("footer.chat")}
               </h4>
               <a
-                href="#"
+                href="https://wa.me/+917738812758"
                 className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded inline-flex items-center transition-all"
               >
                 <FaWhatsapp className="mr-2 h-4 w-4" />
-                <span>{t("footer.whatsapp")}</span>
+                <span>+917738812758</span>
               </a>
             </div>
           </div>

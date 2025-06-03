@@ -3,61 +3,109 @@
 @tailwind utilities;
 
 :root {
+  /* Base colors */
   --background: 0 0% 100%;
-  --foreground: 215 10% 17%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215 20% 65%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 215 10% 17%;
-  --card: 0 0% 100%;
-  --card-foreground: 215 10% 17%;
-  --border: 240 5.9% 90%;
-  --input: 240 5.9% 90%;
-  --primary: 0 100% 45%;
+  --foreground: 210 13% 34%;
+  
+  /* Primary colors - Dark Green variations */
+  --primary: 120 100% 20%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 212 100% 34%;
+  --primary-hover: 120 100% 25%;
+  --primary-active: 120 100% 15%;
+  --primary-muted: 120 100% 95%;
+  
+  /* Secondary colors - Slate Grey variations */
+  --secondary: 210 13% 44%;
   --secondary-foreground: 0 0% 100%;
-  --accent: 240 3.7% 15.9%;
-  --accent-foreground: 0 0% 98%;
+  --secondary-hover: 210 13% 49%;
+  --secondary-active: 210 13% 39%;
+  --secondary-muted: 210 13% 95%;
+  
+  /* UI Element colors */
+  --muted: 210 13% 95%;
+  --muted-foreground: 210 13% 34%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 210 13% 34%;
+  --card: 0 0% 100%;
+  --card-foreground: 210 13% 34%;
+  --border: 210 13% 90%;
+  --input: 210 13% 90%;
+  --ring: 210 13% 44%;
+  
+  /* Accent and state colors */
+  --accent: 120 100% 20%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 60 9.1% 97.8%;
-  --ring: 215 20.2% 65.1%;
+  --destructive-foreground: 0 0% 98%;
+  --success: 142 76% 36%;
+  --success-foreground: 0 0% 100%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 100%;
+  --info: 200 98% 39%;
+  --info-foreground: 0 0% 100%;
+  
+  /* Sidebar specific colors */
+  --sidebar-background: 210 13% 34%;
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-primary: 120 100% 20%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 210 13% 44%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 210 13% 44%;
+  --sidebar-ring: 210 13% 44%;
+  
+  /* Chart colors - Eco-friendly palette */
+  --chart-1: 120 100% 20%;
+  --chart-2: 210 13% 44%;
+  --chart-3: 120 100% 30%;
+  --chart-4: 210 13% 54%;
+  --chart-5: 120 100% 40%;
+  
+  /* Border radius */
   --radius: 0.5rem;
-  --sidebar-background: 240 10% 3.9%;
-  --sidebar-foreground: 0 0% 98%;
-  --sidebar-primary: 207 90% 54%;
-  --sidebar-primary-foreground: 211 100% 99%;
-  --sidebar-accent: 240 3.7% 15.9%;
-  --sidebar-accent-foreground: 0 0% 98%;
-  --sidebar-border: 240 3.7% 15.9%;
-  --sidebar-ring: 240 4.9% 83.9%;
-  --chart-1: 0 100% 45%;
-  --chart-2: 212 100% 34%;
-  --chart-3: 273 100% 61%;
-  --chart-4: 49 100% 64%;
-  --chart-5: 168 100% 30%;
 }
 
 .dark {
-  --background: 240 10% 3.9%;
-  --foreground: 0 0% 98%;
-  --muted: 240 3.7% 15.9%;
-  --muted-foreground: 240 5% 64.9%;
-  --popover: 240 10% 3.9%;
-  --popover-foreground: 0 0% 98%;
-  --card: 240 10% 3.9%;
-  --card-foreground: 0 0% 98%;
-  --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
-  --primary: 0 100% 45%;
+  /* Base colors */
+  --background: 210 13% 34%;
+  --foreground: 0 0% 100%;
+  
+  /* Primary colors - Dark Green variations */
+  --primary: 120 100% 20%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 212 100% 34%;
-  --secondary-foreground: 0 0% 98%;
-  --accent: 240 3.7% 15.9%;
-  --accent-foreground: 0 0% 98%;
+  --primary-hover: 120 100% 25%;
+  --primary-active: 120 100% 15%;
+  --primary-muted: 120 100% 20%;
+  
+  /* Secondary colors - Slate Grey variations */
+  --secondary: 210 13% 44%;
+  --secondary-foreground: 0 0% 100%;
+  --secondary-hover: 210 13% 49%;
+  --secondary-active: 210 13% 39%;
+  --secondary-muted: 210 13% 30%;
+  
+  /* UI Element colors */
+  --muted: 210 13% 44%;
+  --muted-foreground: 210 13% 90%;
+  --popover: 210 13% 34%;
+  --popover-foreground: 0 0% 100%;
+  --card: 210 13% 34%;
+  --card-foreground: 0 0% 100%;
+  --border: 210 13% 44%;
+  --input: 210 13% 44%;
+  --ring: 210 13% 44%;
+  
+  /* Accent and state colors */
+  --accent: 120 100% 20%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
-  --ring: 240 4.9% 83.9%;
+  --success: 142 76% 36%;
+  --success-foreground: 0 0% 100%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 100%;
+  --info: 200 98% 39%;
+  --info-foreground: 0 0% 100%;
 }
 
 @layer base {
@@ -70,7 +118,7 @@
   }
 
   body {
-    @apply h-full bg-[#f5f7fa] text-[#2b2b2b] font-sans antialiased overflow-x-hidden;
+    @apply h-full bg-background text-foreground font-sans antialiased overflow-x-hidden;
     width: 100vw;
     position: relative;
   }
@@ -85,7 +133,7 @@
     @apply font-condensed font-bold;
   }
 
-  /* Custom Scrollbar Styles */
+  /* Enhanced Scrollbar Styles */
   ::-webkit-scrollbar {
     width: 12px;
     height: 12px;
@@ -100,10 +148,11 @@
     background: hsl(var(--primary));
     border-radius: 6px;
     border: 3px solid hsl(var(--muted));
+    transition: background-color 0.2s ease;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary) / 0.8);
+    background: hsl(var(--primary-hover));
   }
 
   /* Firefox Scrollbar */
@@ -143,5 +192,5 @@
 }
 
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
 }
