@@ -19,6 +19,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+import { submitToGoogleSheets } from "@/lib/googleSheets";
 
 // Define form schema with Zod
 const formSchema = z.object({
@@ -57,8 +58,15 @@ const LeadGenerationForm = ({ isOverlay = false, onClose }: LeadGenerationFormPr
 
   const onSubmit = async (data: FormValues) => {
     try {
-      // Here you would normally submit the form data to your backend API
-      console.log("Form submitted:", data);
+      // Add timestamp to the form data
+      const formDataWithTimestamp = {
+        ...data,
+        message: data.message || "", // Ensure message is always a string
+        timestamp: new Date().toISOString(),
+      };
+
+      // Submit to Google Sheets
+      await submitToGoogleSheets(formDataWithTimestamp);
       
       // Show success toast
       toast({
@@ -86,7 +94,7 @@ const LeadGenerationForm = ({ isOverlay = false, onClose }: LeadGenerationFormPr
   // Base classes for the form container
   const containerClasses = isOverlay
     ? "bg-white rounded-lg shadow-lg p-6 max-w-md w-full"
-    : "bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto";
+    : "w-full";
 
   const formContent = (
     <div className={containerClasses}>
@@ -201,6 +209,7 @@ const LeadGenerationForm = ({ isOverlay = false, onClose }: LeadGenerationFormPr
                     placeholder={t("leadForm.messagePlaceholder")} 
                     {...field} 
                     rows={isOverlay ? 3 : 5}
+                    className="resize-none"
                   />
                 </FormControl>
                 <FormMessage />
@@ -238,13 +247,7 @@ const LeadGenerationForm = ({ isOverlay = false, onClose }: LeadGenerationFormPr
 
   // For regular form, just return the form content
   if (!isOverlay) {
-    return (
-      <section className="py-16 bg-[#f5f7fa]">
-        <div className="container mx-auto px-4">
-          {formContent}
-        </div>
-      </section>
-    );
+    return formContent;
   }
 
   // For overlay form, wrap in AnimatePresence for animation

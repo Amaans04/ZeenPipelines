@@ -12,15 +12,39 @@ const Navbar = () => {
   const { language, changeLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let lastScrollTop = 0;
+    const SCROLL_THRESHOLD = 10;
+
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
+      const currentScrollY = window.scrollY;
+      
+      // Calculate scroll direction
+      const scrollDifference = currentScrollY - lastScrollTop;
+      
+      // Show navbar when:
+      // 1. Scrolling up (negative difference)
+      // 2. At the top of the page
+      // 3. Scrolling down but not past threshold
+      if (
+        scrollDifference < -SCROLL_THRESHOLD || 
+        currentScrollY < 50 || 
+        scrollDifference < SCROLL_THRESHOLD
+      ) {
+        setIsVisible(true);
       } else {
-        setScrolled(false);
+        setIsVisible(false);
       }
+      
+      // Update last scroll position
+      lastScrollTop = currentScrollY;
+      
+      // Update scrolled state for shadow
+      setScrolled(currentScrollY > 50);
     };
 
     const handleClickOutside = (event: MouseEvent) => {
@@ -29,7 +53,7 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     document.addEventListener("mousedown", handleClickOutside);
     
     return () => {
@@ -52,8 +76,11 @@ const Navbar = () => {
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      animate={{ 
+        y: isVisible ? 0 : -100,
+        opacity: isVisible ? 1 : 0
+      }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
       className={`fixed w-[calc(100%-2px)] z-40 transition-all duration-300 ${
         scrolled ? "bg-white shadow-md" : "bg-white"
       }`}
@@ -67,7 +94,11 @@ const Navbar = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <Link to="/">
-                <img src={logo} alt="Zeen International Pipeline Supply Logo" className="h-12" />
+                <img 
+                  src={logo} 
+                  alt="Zeen International Pipeline Supply Logo" 
+                  className="h-16 w-[300px] object-contain" 
+                />
               </Link>
             </motion.div>
             <div className="ml-4 hidden md:block">
@@ -129,14 +160,17 @@ const Navbar = () => {
             >
               {t("nav.getQuote")}
             </Link>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden text-foreground"
-              onClick={toggleMenu}
+            <button
+              type="button"
+              className="md:hidden p-2 text-gray-600 hover:text-gray-900"
+              onClick={() => setIsOpen(!isOpen)}
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
+              {isOpen ? (
+                <X size={24} />
+              ) : (
+                <Menu size={24} />
+              )}
+            </button>
           </motion.div>
         </div>
 

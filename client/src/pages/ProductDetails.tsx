@@ -14,11 +14,11 @@ const ProductDetails = () => {
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    // Force scroll to top immediately
+    // Scroll to top with smooth behavior
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'instant'
+      behavior: 'smooth'
     });
     
     // Extract unique categories from products data
@@ -49,10 +49,15 @@ const ProductDetails = () => {
     <PageTransition>
       {/* Hero Section */}
       <div 
-        className="relative h-96 bg-cover bg-center flex items-center"
-        style={{ backgroundImage: `url(${product.image})` }}
+        className="relative h-[500px] flex items-center justify-center"
+        style={{ 
+          backgroundImage: `url(${product.image})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
       >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="absolute inset-0 bg-black opacity-40"></div>
         <div className="container mx-auto px-4 relative z-10">
           <h1 className="text-white text-5xl font-bold font-condensed">
             {product.name}
