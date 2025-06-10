@@ -66,6 +66,8 @@
   "industries": {
     "title": "Industries que Nous Servons",
     "subtitle": "Fourniture de solutions de pipeline spécialisées pour des environnements industriels exigeants",
+    "keyFeatures": "Caractéristiques Clés",
+    "learnMore": "En Savoir Plus",
     "oil": {
       "title": "Pétrole et Gaz",
       "text": "Composants de pipeline en amont, intermédiaire et en aval conçus pour des conditions extrêmes et répondant à des normes de sécurité strictes."
@@ -81,6 +83,11 @@
     "infra": {
       "title": "Infrastructure",
       "text": "Solutions de pipeline durables pour le traitement de l'eau, les projets municipaux et le développement des infrastructures urbaines."
+    },
+    "cta": {
+      "title": "Besoin d'une Solution Sur Mesure ?",
+      "description": "Notre équipe d'experts peut vous aider à trouver les composants de pipeline parfaits pour vos besoins spécifiques en matière d'industrie.",
+      "button": "Contactez Nos Experts"
     }
   },
   "whyUs": {

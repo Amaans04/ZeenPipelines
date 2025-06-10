@@ -75,6 +75,8 @@
   "industries": {
     "title": "Industries We Serve",
     "subtitle": "Specialized pipeline solutions provider.",
+    "keyFeatures": "Key Features",
+    "learnMore": "Learn More",
     "oil": {
       "title": "Oil & Gas",
       "text": "Pipeline components for energy sector."
@@ -90,6 +92,11 @@
     "infra": {
       "title": "Infrastructure",
       "text": "Durable urban infrastructure solutions."
+    },
+    "cta": {
+      "title": "Need a Custom Solution?",
+      "description": "Our team of experts can help you find the perfect pipeline components for your specific industry requirements.",
+      "button": "Contact Our Experts"
     }
   },
   "whyUs": {

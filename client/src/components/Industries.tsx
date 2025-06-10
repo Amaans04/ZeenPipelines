@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Factory, Ship, Zap, Building2, ChevronRight } from "lucide-react";
+import { ArrowRight, Factory, Ship, Zap, Building2, ChevronRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const IndustryCard = ({
@@ -9,11 +9,15 @@ const IndustryCard = ({
   description,
   image,
   index,
+  icon,
+  features,
 }: {
   title: string;
   description: string;
   image: string;
   index: number;
+  icon: React.ReactNode;
+  features: string[];
 }) => {
   const { t } = useTranslation();
   
@@ -33,16 +37,24 @@ const IndustryCard = ({
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute top-4 right-4 bg-white/90 p-2 rounded-lg">
+          {icon}
+        </div>
       </div>
       <div className="p-6">
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
         <p className="text-gray-600 mb-4">{description}</p>
-        <Link href={`/industries/${title.toLowerCase().replace(/\s+/g, "-")}`}>
-          <Button variant="ghost" className="group">
-            {t("industries.learnMore")}
-            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
-        </Link>
+        <div>
+          <h4 className="text-sm font-semibold text-gray-700 mb-2">{t("industries.keyFeatures")}</h4>
+          <ul className="space-y-2">
+            {features.map((feature, idx) => (
+              <li key={idx} className="flex items-center text-sm text-gray-600">
+                <Check className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </motion.div>
   );
@@ -141,24 +153,32 @@ const Industries = () => {
               },
             },
           }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto"
         >
           {industries.map((industry, index) => (
-            <IndustryCard key={industry.id} title={industry.title} description={industry.description} image={industry.image} index={index} />
+            <IndustryCard 
+              key={industry.id} 
+              title={industry.title} 
+              description={industry.description} 
+              image={industry.image} 
+              index={index}
+              icon={industry.icon}
+              features={industry.features}
+            />
           ))}
         </motion.div>
 
         {/* Call to Action */}
         <div className="mt-16 text-center">
-          <h2 className="text-2xl font-bold mb-4">Need a Custom Solution?</h2>
+          <h2 className="text-2xl font-bold mb-4">{t("industries.cta.title")}</h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Our team of experts can help you find the perfect pipeline components for your specific industry requirements.
+            {t("industries.cta.description")}
           </p>
           <Link
             href="/contact"
             className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-md font-medium transition-all inline-flex items-center"
           >
-            <span>Contact Our Experts</span>
+            <span>{t("industries.cta.button")}</span>
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
         </div>

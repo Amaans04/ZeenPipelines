@@ -110,7 +110,7 @@ const Contact = () => {
                     <h4 className="font-bold text-lg">
                       {t("contact.info.phone")}
                     </h4>
-                    <p className="text-gray-600">+971 4 123 4567</p>
+                    <p className="text-gray-600">+91 77388 12758</p>
                   </div>
                 </div>
 
@@ -122,7 +122,7 @@ const Contact = () => {
                     <h4 className="font-bold text-lg">
                       {t("contact.info.email")}
                     </h4>
-                    <p className="text-gray-600">info@zeeninternational.com</p>
+                    <p className="text-gray-600">sales@zeenpipeline.com</p>
                   </div>
                 </div>
 

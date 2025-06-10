@@ -97,7 +97,7 @@ const Navbar = () => {
                 <img 
                   src={logo} 
                   alt="Zeen International Pipeline Supply Logo" 
-                  className="h-16 w-[300px] object-contain" 
+                  className="h-20 w-[400px] object-contain" 
                 />
               </Link>
             </motion.div>
