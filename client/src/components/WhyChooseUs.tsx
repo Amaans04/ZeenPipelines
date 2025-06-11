@@ -303,7 +303,7 @@ const WhyChooseUs = () => {
           </div>
         </AnimatedSection>
 
-        {/* Certification Carousel */}
+        {/* Certification Carousel - Temporarily Commented Out
         <AnimatedSection delay={0.5}>
           <div className="mt-20 bg-white p-8 rounded-lg shadow-md">
             <h3 className="text-2xl font-bold font-condensed text-center mb-10">
@@ -339,6 +339,7 @@ const WhyChooseUs = () => {
             </Carousel>
           </div>
         </AnimatedSection>
+        */}
       </div>
     </section>
   );

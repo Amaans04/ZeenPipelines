@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { MapPin, Phone, Mail, Clock, Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
+import { MapPin, Mail, Clock, Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import LeadGenerationForm from "./LeadGenerationForm";
 
 const formSchema = z.object({
@@ -104,13 +105,20 @@ const Contact = () => {
 
                 <div className="flex items-start">
                   <div className="text-primary mr-4 mt-1">
-                    <Phone className="h-5 w-5" />
+                    <FaWhatsapp className="h-5 w-5" />
                   </div>
                   <div>
                     <h4 className="font-bold text-lg">
                       {t("contact.info.phone")}
                     </h4>
-                    <p className="text-gray-600">+91 77388 12758</p>
+                    <a
+                      href="https://wa.me/+917738812758"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-primary transition-all"
+                    >
+                      {t("footer.whatsapp")}
+                    </a>
                   </div>
                 </div>
 

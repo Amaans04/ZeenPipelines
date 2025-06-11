@@ -19,7 +19,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { submitToGoogleSheets } from "@/lib/googleSheets";
 
 // Define form schema with Zod
 const formSchema = z.object({
@@ -42,6 +41,7 @@ interface LeadGenerationFormProps {
 const LeadGenerationForm = ({ isOverlay = false, onClose }: LeadGenerationFormProps) => {
   const { t } = useTranslation();
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   // Initialize form with default values
   const form = useForm<FormValues>({
@@ -57,37 +57,67 @@ const LeadGenerationForm = ({ isOverlay = false, onClose }: LeadGenerationFormPr
   });
 
   const onSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
     try {
-      // Add timestamp to the form data
-      const formDataWithTimestamp = {
-        ...data,
-        message: data.message || "", // Ensure message is always a string
-        timestamp: new Date().toISOString(),
-      };
+      // Google Script URL
+      const scriptURL = "https://script.google.com/macros/s/AKfycbz-AH-gqvON0xuTql78LPsxZXM8zLt7EQHeLoFErPpeIpDFcHBTNqIxN11iGjXmHJDqFQ/exec";
+      
+      // Build URL with query parameters
+      const url = new URL(scriptURL);
+      url.searchParams.append("name", data.name);
+      url.searchParams.append("email", data.email);
+      url.searchParams.append("company", data.company);
+      url.searchParams.append("phone", data.phone);
+      url.searchParams.append("message", data.message || "");
+      url.searchParams.append("subscribe", data.subscribe ? "Yes" : "No");
+      url.searchParams.append("timestamp", new Date().toISOString());
+      url.searchParams.append("sourceUrl", window.location.href);
 
-      // Submit to Google Sheets
-      await submitToGoogleSheets(formDataWithTimestamp);
+      // Use XMLHttpRequest instead of fetch
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", url.toString(), true);
       
-      // Show success toast
-      toast({
-        title: t("form.successTitle"),
-        description: t("form.successMessage"),
-      });
+      xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          console.log("Form submitted successfully:", xhr.responseText);
+          toast({
+            title: t("form.successTitle"),
+            description: t("form.successMessage"),
+          });
+          form.reset();
+          if (isOverlay && onClose) {
+            onClose();
+          }
+        } else {
+          console.error("Error submitting form:", xhr.statusText);
+          toast({
+            title: t("form.errorTitle"),
+            description: t("form.errorMessage"),
+            variant: "destructive"
+          });
+        }
+        setIsSubmitting(false);
+      };
       
-      // Reset form
-      form.reset();
+      xhr.onerror = function() {
+        console.error("Network error during form submission");
+        toast({
+          title: t("form.errorTitle"),
+          description: t("form.errorMessage"),
+          variant: "destructive"
+        });
+        setIsSubmitting(false);
+      };
       
-      // Close overlay if it's an overlay
-      if (isOverlay && onClose) {
-        onClose();
-      }
+      xhr.send();
     } catch (error) {
       console.error("Error submitting form:", error);
       toast({
         title: t("form.errorTitle"),
         description: t("form.errorMessage"),
-        variant: "destructive",
+        variant: "destructive"
       });
+      setIsSubmitting(false);
     }
   };
 
@@ -237,8 +267,12 @@ const LeadGenerationForm = ({ isOverlay = false, onClose }: LeadGenerationFormPr
             )}
           />
           
-          <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-            {t("leadForm.submitButton")}
+          <Button 
+            type="submit" 
+            className="w-full bg-primary hover:bg-primary/90"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "SUBMITTING..." : t("leadForm.submitButton")}
           </Button>
         </form>
       </Form>

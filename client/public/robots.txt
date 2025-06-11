@@ -1,11 +1,9 @@
-# Allow all crawlers
+# www.zeenpipeline.com robots.txt
 User-agent: *
 Allow: /
-
-# Sitemap location
-Sitemap: https://www.zeenpipeline.com/sitemap.xml
-
-# Disallow admin and private areas
+Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
-Disallow: /api/ 
+
+# Sitemap location
+Sitemap: https://www.zeenpipeline.com/sitemap.xml 

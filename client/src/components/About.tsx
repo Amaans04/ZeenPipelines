@@ -31,64 +31,36 @@ const About = () => {
             </h3>
             <p className="mb-4 text-gray-700">{t("about.historyText")}</p>
 
-            <div className="mt-8 space-y-4">
-              <div className="flex items-start">
-                <div className="bg-secondary p-2 rounded-full text-white mr-4">
-                  <Check className="h-4 w-4" />
+            <div className="space-y-6">
+              <div className="flex items-center space-x-4">
+                <div className="bg-primary/10 p-3 rounded-lg">
+                  <Check className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg">
-                    {t("about.values.quality.title")}
-                  </h4>
-                  <p className="text-gray-600">
-                    {t("about.values.quality.text")}
-                  </p>
+                  <h3 className="text-lg font-semibold">{t("about.values.quality.title")}</h3>
+                  <p className="text-gray-600">{t("about.values.quality.text")}</p>
                 </div>
               </div>
-              <div className="flex items-start">
-                <div className="bg-secondary p-2 rounded-full text-white mr-4">
-                  <Globe className="h-4 w-4" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg">
-                    {t("about.values.global.title")}
-                  </h4>
-                  <p className="text-gray-600">
-                    {t("about.values.global.text")}
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="bg-secondary p-2 rounded-full text-white mr-4">
-                  <Truck className="h-4 w-4" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg">
-                    {t("about.values.delivery.title")}
-                  </h4>
-                  <p className="text-gray-600">
-                    {t("about.values.delivery.text")}
-                  </p>
-                </div>
-              </div>
-            </div>
 
-            <div className="mt-10 flex flex-wrap gap-6">
-              <img
-                src="https://via.placeholder.com/120x60?text=ISO+9001"
-                alt="ISO Certification"
-                className="h-16"
-              />
-              <img
-                src="https://via.placeholder.com/120x60?text=API+Cert"
-                alt="API Certification"
-                className="h-16"
-              />
-              <img
-                src="https://via.placeholder.com/120x60?text=Industry+Award"
-                alt="Industry Award"
-                className="h-16"
-              />
+              <div className="flex items-center space-x-4">
+                <div className="bg-primary/10 p-3 rounded-lg">
+                  <Globe className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">{t("about.values.global.title")}</h3>
+                  <p className="text-gray-600">{t("about.values.global.text")}</p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="bg-primary/10 p-3 rounded-lg">
+                  <Truck className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">{t("about.values.delivery.title")}</h3>
+                  <p className="text-gray-600">{t("about.values.delivery.text")}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

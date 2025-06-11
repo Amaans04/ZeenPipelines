@@ -172,10 +172,12 @@ const Footer = () => {
               </h4>
               <a
                 href="https://wa.me/+917738812758"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded inline-flex items-center transition-all"
               >
                 <FaWhatsapp className="mr-2 h-4 w-4" />
-                <span>+917738812758</span>
+                <span>{t("footer.whatsapp")}</span>
               </a>
             </div>
           </div>
