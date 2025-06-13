@@ -48,7 +48,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#home"
+                  href="/"
                   className="text-gray-400 hover:text-white transition-all"
                 >
                   {t("nav.home")}
@@ -56,7 +56,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#about"
+                  href="about"
                   className="text-gray-400 hover:text-white transition-all"
                 >
                   {t("nav.about")}
@@ -64,7 +64,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#products"
+                  href="products"
                   className="text-gray-400 hover:text-white transition-all"
                 >
                   {t("nav.products")}
@@ -72,7 +72,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#industries"
+                  href="industries"
                   className="text-gray-400 hover:text-white transition-all"
                 >
                   {t("nav.industries")}
@@ -80,7 +80,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#why-us"
+                  href="why-us"
                   className="text-gray-400 hover:text-white transition-all"
                 >
                   {t("nav.whyUs")}
@@ -88,7 +88,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#contact"
+                  href="contact"
                   className="text-gray-400 hover:text-white transition-all"
                 >
                   {t("nav.contact")}

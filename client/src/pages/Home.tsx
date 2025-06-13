@@ -21,13 +21,15 @@ import { Button } from "@/components/ui/button";
 import PageTransition from "@/components/PageTransition";
 import { useLocation } from "wouter";
 
+
 const ClientMarquee = () => {
   // List of notable clients/companies served with their logos
-  const clients = Array.from({ length: 10 }, (_, i) => ({
+  const clients = Array.from({ length: 8 }, (_, i) => ({
     name: `Company ${i + 1}`,
-    logo: `/logos/cmpimg-${i + 1}.webp`
+    logo: `/logos/clients/cmpimg (${i + 1}).png`
   }));
-  
+
+
   return (
     <div className="bg-white py-6 border-t border-b border-gray-200 overflow-hidden">
       <div className="container mx-auto px-4 mb-3">
@@ -38,7 +40,7 @@ const ClientMarquee = () => {
       </div>
       <div className="animate-marquee whitespace-nowrap">
         {clients.map((client, index) => (
-          <div key={index} className="inline-block mx-6">
+          <div key={index} className="inline-block mx-12">
             <img 
               src={client.logo} 
               alt={client.name} 
@@ -53,7 +55,7 @@ const ClientMarquee = () => {
         ))}
         {/* Duplicate for seamless looping */}
         {clients.map((client, index) => (
-          <div key={index + 100} className="inline-block mx-6">
+          <div key={index + 100} className="inline-block mx-12">
             <img 
               src={client.logo} 
               alt={client.name} 
@@ -61,6 +63,56 @@ const ClientMarquee = () => {
               title={client.name}
               onError={(e) => {
                 console.error(`Failed to load image: ${client.logo}`);
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const SupplierMarquee = () => {
+  // List of notable Supplier/companies served with their logos
+  const supplier = Array.from({ length: 10 }, (_, i) => ({
+    name: `Company ${i + 1}`,
+    logo: `/logos/cmpimg-${i + 1}.webp`
+  }));
+
+  return (
+    <div className="bg-white py-6 border-t border-b border-gray-200 overflow-hidden">
+      <div className="container mx-auto px-4 mb-3">
+        <h4 className="text-center text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
+          Our Trusted Suppliers
+        </h4>
+        <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+      </div>
+      <div className="animate-marquee whitespace-nowrap">
+        {supplier.map((supplier, index) => (
+          <div key={index} className="inline-block mx-6">
+            <img 
+              src={supplier.logo} 
+              alt={supplier.name} 
+              className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all" 
+              title={supplier.name}
+              onError={(e) => {
+                console.error(`Failed to load image: ${supplier.logo}`);
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          </div>
+        ))}
+        {/* Duplicate for seamless looping */}
+        {supplier.map((supplier, index) => (
+          <div key={index + 100} className="inline-block mx-6">
+            <img 
+              src={supplier.logo} 
+              alt={supplier.name} 
+              className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all" 
+              title={supplier.name}
+              onError={(e) => {
+                console.error(`Failed to load image: ${supplier.logo}`);
                 e.currentTarget.style.display = 'none';
               }}
             />
@@ -223,8 +275,8 @@ const Home = () => {
       <LeadFormOverlay />
       
       <Hero />
-      
-      <ClientMarquee />
+ 
+      <SupplierMarquee />
       
       {/* About Us Section */}
       <section className="py-20 bg-[#f5f7fa]">
@@ -319,7 +371,7 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
-      
+      <ClientMarquee />
       {/* Testimonials Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -349,11 +401,11 @@ const Home = () => {
               <motion.div key={testimonial.id} variants={itemVariants}>
                 <TestimonialCard testimonial={testimonial} />
               </motion.div>
+              
             ))}
           </motion.div>
         </div>
       </section>
-      
       {/* Lead Generation Form Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -364,6 +416,7 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto"
           >
+
             <LeadGenerationForm />
           </motion.div>
         </div>
